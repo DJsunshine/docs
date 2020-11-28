@@ -1,4 +1,7 @@
+const moment = require('moment');
+moment.locale("zh-cn")
 module.exports = {
+  base: "/docs/",
   title: '可乐比酒更醉人',
   description: '可乐比酒更醉人的笔记',
   head: [
@@ -7,6 +10,17 @@ module.exports = {
     ['meta', { name: 'author', content: '可乐比酒更质醉人' }]
 
   ], 
+  plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          return moment(timestamp).format("LLLL")
+        }
+      }
+    ]
+  ],
   themeConfig: {
     // lastUpdated: 'Last Updated',
     lastUpdated: '更新时间 ', // string | boolean
