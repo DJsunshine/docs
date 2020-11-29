@@ -1,26 +1,11 @@
-const moment = require('moment');
-moment.locale("zh-cn")
+const headConf = require('./config/headConf.js')
+const pluginConf = require('./config/pluginConf.js')
 module.exports = {
-  base: "/docs/",
+  base: "/",
   title: '可乐比酒更醉人',
-  description: '可乐比酒更醉人的笔记',
-  head: [
-    ['meta', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'keywords', content: 'vuepress 介绍, vuepress 说明' }],
-    ['meta', { name: 'author', content: '可乐比酒更质醉人' }]
-
-  ], 
-  plugins: [
-    [
-      '@vuepress/last-updated',
-      {
-        transformer: (timestamp, lang) => {
-          // 不要忘了安装 moment
-          return moment(timestamp).format("LLLL")
-        }
-      }
-    ]
-  ],
+  description: '可乐比酒更醉人的笔记', 
+  head: headConf,
+  plugins: pluginConf,
   themeConfig: {
     // lastUpdated: 'Last Updated',
     lastUpdated: '更新时间 ', // string | boolean
